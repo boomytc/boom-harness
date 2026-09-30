@@ -29,11 +29,11 @@ compile(declarations: Declaration[]): CompiledMap
 bind(compiled: CompiledMap, config: LlmCallConfig): JsonMergePatch
 ```
 
-`Declaration` 是 `{ match, overlay }`。`overlay` 把 `reasoningEffort` 或 `maxTokens` 映到一条键路径、可选取值表，以及这个选项族要删掉的其它键。`temperature` 和 `stop` 不在这张表里。`bind` 只读 `LlmCallConfig` 的 `reasoningEffort` 与 `maxTokens`。配置里没有的标量不产生键。
+`Declaration` 是 `{ match, overlay }`。`overlay` 把 `reasoningEffort` 或 `maxTokens` 映到一条键路径、可选取值表或范围约束，以及这个选项族要删掉的其它键。`temperature` 和 `stop` 不在这张表里。`bind` 只读 `LlmCallConfig` 的 `reasoningEffort` 与 `maxTokens`。配置里没有的标量不产生键。
 
 键路径是键的列表，`bind` 把它变成 RFC 7396 要的嵌套对象。`['thinking', 'type']` 是 `{ thinking: { type } }`，不是字面键 `thinking.type`。应用补丁前先删除 `replaces` 里的键，再做 merge。只 merge 不删除，就无法满足「不出现另一个推理字段」。
 
-`compile` 拒绝未知标量和越界取值，不静默丢掉。重复路径时后者覆盖前者，并留下诊断。模型名表从前往后合并，后者赢，不按通配符长短自动选择。overlay 只含上下文窗口、模态和本映射的声明，不含账号与 URL。没有任何 glob 命中时，与没有 `CompiledMap` 一样返回原对象。
+`compile` 拒绝未知标量和越界取值，不静默丢掉。重复路径时后者覆盖前者，并留下诊断。按模型名匹配的声明从前往后合并，后者覆盖同一选项的声明（键路径、取值表或范围约束、同族删键），不按通配符长短自动选择。`overlay` 只含 `reasoningEffort` 与 `maxTokens` 的映射声明，不含上下文窗口、模态、账号或 URL；模型的能力元数据保持原值。没有任何 glob 命中时，与没有 `CompiledMap` 一样返回原对象。
 
 ### 挂载点
 

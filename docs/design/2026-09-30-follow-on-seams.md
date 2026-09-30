@@ -63,5 +63,5 @@ related:
 
 ## 横切面
 
-- 合并：worktree、停止门和模型重试续跑会碰到 `subagent` 与 `agent-loop`。工具结果双份碰到 `hooks-claude-code` 和 `appendToolResult` 旁边的投影。沙箱补强扩展文件 confine，网络允许列表不进 `SandboxPolicy`。hunk、技能扫描和棘轮可以停在 boom 包或脚本里。
+- 合并：worktree 改 `subagent` 的隔离选项与提供方 cwd；停止门只监听 `agent/turn-stopping` 再 `steer`，不改循环内部；模型重试续跑（US-7）才改 `agent-loop.resume`。工具结果双份碰到 `hooks-claude-code` 和 `appendToolResult` 旁边的投影。沙箱补强扩展文件 confine，网络允许列表不进 `SandboxPolicy`。hunk、技能扫描和棘轮可以停在 boom 包或脚本里。
 - 安全：沙箱补强是权限规则和记忆文件的实际边界。它排在后面，是因为前面的规格用 API 限制了正常工具；全开沙箱的 shell 仍要等这一条。

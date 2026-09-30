@@ -32,11 +32,11 @@ related:
 - Given 模型声明最大输出写入 `max_completion_tokens`，When `maxTokens` 为 1024，Then 体里该字段为 1024，且没有 `max_tokens`。
 - Given 两个补丁写同一路径，When 编译，Then 后者覆盖前者，顺序与声明顺序一致。
 
-### US-2：按模型名叠加能力（P1）
+### US-2：按模型名叠加选项声明（P1）
 
 **验收场景**：
 
-- Given 有序规则先写 `gpt-*` 再写 `gpt-4.1*`，When 解析 `gpt-4.1`，Then 后出现的规则覆盖先出现的规则的窗口、模态和选项取值范围。
+- Given 有序规则先写 `gpt-*` 再写 `gpt-4.1*`，When 为 `gpt-4.1` 编译映射，Then 后出现的命中规则覆盖前者的 `reasoningEffort` / `maxTokens` 选项声明（键路径、取值表或范围约束、同族删键）；上下文窗口与模态保持模型原有值。
 - Given boom 表里没有任何 glob 命中，或根本没有 `CompiledMap`，When 解析，Then 返回原对象，与今天的适配器默认值相同。
 
 ## 功能需求
@@ -56,3 +56,4 @@ related:
 - 官方网关改写、账号、套餐、可见性与排序字段。
 - 替换 `llm-pi-ai` 或新包一层 AI SDK `fetch`。
 - 虚拟模型（选择身份与物理路由分离）。那是参照项，未排期。
+- 覆盖模型的上下文窗口、模态或其它能力元数据。

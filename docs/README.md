@@ -2,6 +2,8 @@
 
 本目录是 boom-harness 的实现方案。源码树尚未从 DeepSeek Harness fork 进来；这些文档先于 fork 存在，执行 [plan/2026-09-30-00-fork-bootstrap.md](plan/2026-09-30-00-fork-bootstrap.md) 时必须整目录保留。
 
+文档用于准备参考并吸收 `/Users/boom/workspace/` 中 harness 相关仓库的实现，最终落地 boom-harness：`deepseek-harness` 是运行时底座，`pi`、`grok-build`、`ZCode`、`QwenPaw` 是行为源码参照；`Tianshu-harness` 的产品组织方式与 `LightAgent` 的局部行为参照，边界见决策 [0001](decisions/0001-fork-dsh-and-absorb-at-seams.md) 与 [0002](decisions/0002-out-of-scope-sources.md)。每条吸收先核对本地源码与 dsh seam，再按行为队列的 spec → design → plan 重写并验收。分支和编码契约服务于这条实施路径。
+
 ## 归类
 
 | 目录 | 回答 | 不回答 |
