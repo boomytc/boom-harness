@@ -11,12 +11,15 @@
 | [design/](design/README.md) | 落在哪个 seam、数据怎么流、为什么不选另一种结构 | 用户故事编号的重复展开 |
 | [plan/](plan/README.md) | 下一步改哪些路径、按什么顺序、用什么命令验收 | 新的产品决定 |
 
+给编码 agent 的硬契约入口是 [agent-contract.md](agent-contract.md)，只引用上表内容，不新增决定。
+
 ## 阅读顺序
 
 1. [decisions/0001-fork-dsh-and-absorb-at-seams.md](decisions/0001-fork-dsh-and-absorb-at-seams.md)
 2. [decisions/0002-out-of-scope-sources.md](decisions/0002-out-of-scope-sources.md)
-3. [specs/2026-09-30-fork-baseline.md](specs/2026-09-30-fork-baseline.md) 与 [plan/2026-09-30-00-fork-bootstrap.md](plan/2026-09-30-00-fork-bootstrap.md)
-4. 之后按 plan 编号 01 到 05，每条先读同名 spec，再读同名 design，再执行 plan
+3. [decisions/0003-branch-and-release-conventions.md](decisions/0003-branch-and-release-conventions.md)
+4. [specs/2026-09-30-fork-baseline.md](specs/2026-09-30-fork-baseline.md) 与 [plan/2026-09-30-00-fork-bootstrap.md](plan/2026-09-30-00-fork-bootstrap.md)
+5. 之后按 plan 编号 01 到 05，每条先读同名 spec，再读同名 design，再执行 plan
 
 ## 行为队列
 
